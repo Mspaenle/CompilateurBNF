@@ -19,6 +19,10 @@ abstract class Types extends LangTest {
 class Integer extends Types {
 
     int e;
+	
+	Integer(int e){
+		this.e=e;
+	}
 
     void affiche () {
         system.out.println(e);
@@ -30,6 +34,10 @@ class Boolean extends Types {
 
     boolean e;
 
+	Boolean(boolean e){
+		this.e=e;
+	}
+	
     void affiche () {
         system.out.println(e);
     }//affichage
@@ -38,8 +46,12 @@ class Boolean extends Types {
 
 class Array extends Types {
 
-    Types[] e;
+    ArrayList<Type> e;
 
+	Array(ArrayList<Type> e){
+		this.e=e;
+	}
+	
     void affiche () {
         system.out.println(e);
     }//affichage
@@ -60,6 +72,10 @@ class Number extends Constantes {
 
     int e;
 
+	Number(int e){
+		this.e=e;
+	}
+	
     void affiche () {
         system.out.println(e);
     }//affichage
@@ -70,6 +86,10 @@ class True extends Constantes {
 
     boolean e=True;   // Comment on gère les valeurs par défautl ?
 
+	True(boolean e){
+		this.e=e;
+	}
+	
     void affiche () {
         system.out.println(e);
     }//affichage
@@ -80,6 +100,10 @@ class False extends Constantes {
 
     boolean e=False;
 
+	False(boolean e){
+		thie.e=e;
+	}
+	
     void affiche () {
         system.out.println(e);
     }//affichage
@@ -211,7 +235,9 @@ class NotEg extends Binaire {
 // CIBLES
 
 abstract class Cibles extends LangTest {
+
     abstract void affiche();
+
 }//Cibles
 
 class Read extends Cibles{
@@ -344,10 +370,10 @@ class FuncExp extends Exp{
 
 class TabExp extends Exp{
 
-    Exp[] e;
+    ArrayList<Exp> e;
     Exp i;
 
-    tabExp (Exp[] e, Exp i){
+    tabExp (ArrayList<Exp> e, Exp i){
         this.e =e;
         this.i =i;
     }
@@ -378,7 +404,9 @@ class newArrayExp extends Exp{
 //INSTRUCTIONS
 
 abstract class Instr extends LangTest{
+
     abstract void affiche();
+
 }//Instr
 
 class Affect extends Instr{
@@ -399,11 +427,11 @@ class Affect extends Instr{
 
 class AffectTab extends Instr{
 
-    Exp[] x;
+    ArrayList<Exp> x;
     Exp e1;
     Exp e2;
 
-    AffectTab (Exp[] x, Exp e1, Exp e2){
+    AffectTab (ArrayList<Exp> x, Exp e1, Exp e2){
         this.x=x;
         this.e1=e1;
         this.e2=e2;
@@ -451,10 +479,10 @@ class While extends Instr{
 
 class FuncInstr extends Instr{
 
-    Exp[] e;
+    ArrayList<Exp> e;
     Cibles c;
 
-    FuncInst (Exp[] e, Cibles c){
+    FuncInst (ArrayList<Exp> e, Cibles c){
         this.e =e;
         this.c =c;
     }
@@ -486,6 +514,7 @@ class DoubleInstr extends Instr{
     void affiche(){
         system.out.println(i1+";"+i2);
     }
+	
 }//DoubleInstr
 
 // ****
@@ -493,7 +522,9 @@ class DoubleInstr extends Instr{
 //DEFINITIONS
 
 abstract class Def extends LangTest{
-    abstract void affiche();
+    
+	abstract void affiche();
+
 }
 
 abstract class VarTyp extends LangTest{
@@ -526,7 +557,91 @@ class DeclFunc extends Def{
 
     void affiche(){
         system.out.println(f+"((");
+		system.out.println(a[i]);
+		system.out.println(")[:"+t+"]");
         // Mettre un while pour afficher tout le tableau ?
     }
 
 }//DeclFunc
+
+class DeclVar extends Def{
+	
+	//var
+	ArrayList <VarTyp> a;
+	
+	DeclVar(ArrayList <VarTyp> a){
+		this.a=a;
+	}
+	
+	void affiche(){
+		system.out.println("[var ("+a+")]");
+	}
+	
+}//DeclVar
+
+class DefInstr extends Def{
+
+	Instr i;
+	
+	DefInstr(Instr i){
+		this.i=i;
+	}
+	
+	void affiche(){
+		system.out.println(i);
+	}
+
+}//DefInstr
+
+//****
+
+//PROGRAMMES
+
+abstract class Prog extends LangTest{
+
+	abstract void affiche();
+
+}//Prog
+
+class ProgVar extends Prog{
+	
+	//var
+	ArrayList <VarTyp> a;
+	
+	ProgVar(ArrayList <VarTyp> a){
+		this.a=a;
+	}
+	
+	void affiche(){
+		system.out.println("[var ("+a+")]");
+	}
+	
+}//ProgVar
+
+class ProgDef extends Prog{
+
+	ArrayList <Def> = a;
+
+	ProgDef(ArrayList<Def> a){
+		this.a=a;
+	}
+
+	void affiche(){
+		system.out.println(a);
+	}
+
+}//ProgDef
+
+class ProgInstr extends Prog{
+
+	Instr i;
+
+	ProgInstr(Instr i){
+		this.i=i;
+	}
+
+	void affiche(){
+		system.out.println(i);
+	}
+
+}//ProgInstr

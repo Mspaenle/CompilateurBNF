@@ -344,7 +344,7 @@ class PPArrayGet extends PPExpr {
     UPPExpr toUPP(ArrayList<String> locals) {
         UPPExpr narr = arr.toUPP(locals), nindex = index.toUPP(locals);
         UPPExpr offset = new UPPMul(new UPPCte(4),nindex);
-        return new UPPLoad(new UPPAdd(narr, offset));//To do /////
+        return new UPPLoad(new UPPAdd(narr, offset));//To do Ask about it
     }//toUPP
 
 }//PPArrayGet

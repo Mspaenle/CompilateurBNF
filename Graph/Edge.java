@@ -1,8 +1,8 @@
 package Graph;
 
 /**
-@author Assil El Yahyaoui - Mahé Spaenlé
-@version 1.0
+	*@author Assil El Yahyaoui - Mahé Spaenlé
+	*@version 1.0
 */
 
 public abstract class Edge{
@@ -31,18 +31,18 @@ public abstract class Edge{
 	}
 
 /**
-	Test if the edge contain the vertex
-	@param v a vertex
-	@return boolean, true if it contains the vertex, else false
+	*Test if the edge contain the vertex
+	*@param v a vertex
+	*@return boolean, true if it contains the vertex, else false
 */
 	public boolean containsVertex(Vertex v){
 		return (v.equals(this.v1)||v.equals(this.v2));
 	}
 
 /**
-	Give the other end of the edge if v id v1 or v2
-	@param v a vertex
-	@return a vertex, v1 if v=v2, v2 if v=v1, null if not
+	*Give the other end of the edge if v id v1 or v2
+	*@param v a vertex
+	*@return a vertex, v1 if v=v2, v2 if v=v1, null if not
 */
 	public Vertex getNeighbor(Vertex v){
 		if(!containsVertex(v)){

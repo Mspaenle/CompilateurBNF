@@ -5,7 +5,7 @@ package Graph;
 @version 1.0
 */
 
-public class Edge{
+public abstract class Edge{
 	public Vertex v1;
 	public Vertex v2;
 

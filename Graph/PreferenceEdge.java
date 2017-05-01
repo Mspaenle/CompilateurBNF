@@ -1,14 +1,17 @@
-package Graph;
+package graph ; 
 
-/**
-	*@author Assil El Yahyaoui - Mahé Spaenlé
-	*@version 1.0
-*/
 
-public class PreferenceEdge extends Edge{
+// Edge est un lien donc ' une arête ' 
+// il y aura donc des sous classes pour les arc aka arêtes orientées 
 
-	public PreferenceEdge(Vertex v1, Vertex v2){
-		super(v1,v2);
-	}
+public abstract class PreferenceEdge{
 
-}
+	
+
+	public void PreferenceEdge(String name, Vertex first, Vertex second){	
+       
+       this.name = name; 
+       this.first = first ;
+       this.second = second ;
+     
+	}	

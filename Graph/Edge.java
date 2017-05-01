@@ -1,58 +1,67 @@
-package Graph;
 
-/**
-	*@author Assil El Yahyaoui - Mahé Spaenlé
-	*@version 1.0
-*/
+package graph ; 
+
+
+// Edge est un lien donc ' une arête ' 
+// il y aura donc des sous classes pour les arc aka arêtes orientées 
 
 public abstract class Edge{
-	public Vertex v1;
-	public Vertex v2;
 
-	public Edge(Vertex v1, Vertex v2){
-		this.v1 = v1;
-		this.v2 = v2;
+	protected String name ; 
+	protected Vertex first ;  
+	protected Vertex second ;
+	//protected Graph graph  ;
+
+
+	public void Edge(String name, Vertex first, Vertex second){	
+       
+       this.name = name; 
+       this.first = first ;
+       this.second = second ;
+      // this.graph = graph; 
+
+	}	
+
+	public Vertex getFirst(){
+
+		return this.first ; 
 	}
 
-	public Vertex getVertex1(){
-		return this.v1;
+	public Vertex getSecond(){
+
+		return this.second ; 
 	}
 
-	public void setVertex1(Vertex v){
-		this.v1=v;
+	public String getName(){
+		return this.name; 
 	}
 
-	public Vertex getVertex2(){
-		return this.v2;
+	public void setName (String name){
+		this.name = name ;
 	}
 
-	public void setVertex2(Vertex v){
-		this.v2=v;
+	public void setFirst (Vertex first){
+		this.first = first ; 
 	}
 
-/**
-	*Test if the edge contain the vertex
-	*@param v a vertex
-	*@return boolean, true if it contains the vertex, else false
-*/
-	public boolean containsVertex(Vertex v){
-		return (v.equals(this.v1)||v.equals(this.v2));
+	public void setSecond (Vertex second ){
+		this.second = second ; 
 	}
 
-/**
-	*Give the other end of the edge if v id v1 or v2
-	*@param v a vertex
-	*@return a vertex, v1 if v=v2, v2 if v=v1, null if not
-*/
-	public Vertex getNeighbor(Vertex v){
-		if(!containsVertex(v)){
-			return null;
-		}
-		else if(v.equals(this.v1)){
-			return this.v2;
-		}
-		else {
-			return this.v1;
-		}
+	public boolean containsVertex (Vertex vertex){
+
+		if (this.first == vertex | this.second == vertex ){ return true; }
+		else { return false ; }
+
 	}
+
+
+	public Vertex getOtherEnd ( Vertex vertex){
+
+		if ( this.first == vertex ){return this.second ; }
+		else if (this.second == vertex) {return this.first ; }
+			 else {return null}	
+	}
+
+
 }

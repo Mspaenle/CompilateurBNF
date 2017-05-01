@@ -1,33 +1,38 @@
-package Graph;
+package graph; 
 
-/**
-	*@author Assil El Yahyaoui - Mahé Spaenlé
-	*@version 1.0
-*/
+// cest les noeuds 
 
-public class Vertex{
-	private String value;
-	private int color;
 
-	public Vertex(String val){
-		this.value=val;
-		this.color=-1;
+
+public class Vertex {
+
+	public String name ; 
+	public Color color ;
+
+
+
+	public void Vertex(String name, Color color){	
+      this.name = name ; 
+      this.color = color ; 
+    }	
+
+
+// NOT DONE 
+	public String getName(){
+		return this.name ; 
 	}
 
-	public String getValue(){
-		return this.value;
+	public Color getColor(){
+		return this.color; 
 	}
 
-	public void setValue(String val){
-		this.value = val;
+	public void setName(String name){
+		this.name= name;
 	}
 
-	public int getColor(){
-		return this.color;
+	public void setColor(Color color){
+		this.color = color ; 
 	}
-	
-	public void setColor(int color){
-		this.color = color;
-	}
+
 
 }
